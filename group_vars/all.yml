@@ -1,0 +1,3 @@
+namenode_hostname: nn01
+hadoop_conf_dir: /home/ljiang/hadoop/hadoop-3.4.1/etc/hadoop
+hadoop_user: ljiang

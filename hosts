@@ -1,0 +1,24 @@
+[all_nodes]
+nn01 ansible_host=192.168.0.33
+cn01 ansible_host=192.168.0.34
+dn01 ansible_host=192.168.0.35
+rm01 ansible_host=192.168.0.36
+
+[namenodes]
+nn01
+
+[nodemanager]
+cn01
+
+[datanodes]
+dn01
+
+[resourcemanagers]
+rm01
+
+
+[hadoop:children]
+namenodes
+datanodes
+resourcemanagers
+nodemanager

@@ -1,0 +1,14 @@
+<configuration>
+<property>
+  <name>yarn.resourcemanager.hostname</name>
+  <value>rm01</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.principal</name>
+  <value>yarn/rm01@HADOOP.LOCAL</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.keytab</name>
+  <value>/etc/security/keytabs/yarn.rm01.keytab</value>
+</property>
+</configuration>

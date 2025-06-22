@@ -1,0 +1,17 @@
+- name: Distribute yarn-site.xml and start NodeManager
+  hosts:
+    - nn01
+    - rm01
+    - cn01
+    - dn01
+  become: yes
+  tasks:
+
+    - name: Copy yarn-site.xml to nodes
+      copy:
+        src: files/yarn-site.xml
+        dest: /home/ljiang/hadoop/hadoop-3.4.1/etc/hadoop/yarn-site.xml
+        owner: ljiang
+        group: ljiang
+        mode: '0644'
+

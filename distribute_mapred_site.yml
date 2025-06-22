@@ -1,0 +1,16 @@
+- name: Distribute mapred-site.xml and restart NodeManager/ResourceManager if needed
+  hosts:
+    - nn01
+    - rm01
+    - cn01
+    - dn01
+  become: yes
+  tasks:
+
+    - name: Copy mapred-site.xml to all nodes
+      copy:
+        src: files/mapred-site.xml
+        dest: /home/ljiang/hadoop/hadoop-3.4.1/etc/hadoop/mapred-site.xml
+        owner: ljiang
+        group: ljiang
+        mode: '0644'

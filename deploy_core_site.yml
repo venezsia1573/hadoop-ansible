@@ -1,0 +1,29 @@
+- name: Deploy Hadoop core-site.xml and restart DataNode
+  hosts: all
+  become: yes
+  vars:
+    hadoop_home: /home/ljiang/hadoop/hadoop-3.4.1
+
+  tasks:
+    - name: Copy core-site.xml to Hadoop configuration directory
+      copy:
+        src: files/core-site.xml
+        dest: "{{ hadoop_home }}/etc/hadoop/core-site.xml"
+        owner: ljiang
+        group: ljiang
+        mode: '0644'
+
+    - name: Set JAVA_HOME environment variable for Hadoop commands
+      lineinfile:
+        path: /home/ljiang/.bashrc
+        line: 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64'
+        state: present
+        create: yes
+      become_user: ljiang
+
+    - name: Restart DataNode daemon
+      shell: |
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
+        {{ hadoop_home }}/bin/hdfs --daemon stop datanode || true
+        {{ hadoop_home }}/bin/hdfs --daemon start datanode
+      become_user: ljiang

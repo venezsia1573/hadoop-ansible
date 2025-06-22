@@ -1,0 +1,8 @@
+- name: Copy core-site.xml to Hadoop config directory
+  copy:
+    src: core-site.xml
+    dest: "{{ hadoop_conf_dir }}/core-site.xml"
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_user }}"
+    mode: '0644'
+
