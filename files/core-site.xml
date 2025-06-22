@@ -1,31 +1,15 @@
 <configuration>
   <property>
-    <name>fs.defaultFS</name>
-    <value>hdfs://nn01:9000</value>
-  </property>
-
-  <property>
     <name>hadoop.security.authentication</name>
     <value>kerberos</value>
   </property>
-
   <property>
     <name>hadoop.security.authorization</name>
     <value>true</value>
   </property>
-
+  <!-- 可选：RPC 也加完整性或加密 -->
   <property>
     <name>hadoop.rpc.protection</name>
-    <value>integrity</value>
+    <value>authentication</value>
   </property>
-
-  <property>
-    <name>hadoop.proxyuser.ljiang.hosts</name>
-    <value>*</value>
-  </property>
-  <property>
-    <name>hadoop.proxyuser.ljiang.groups</name>
-    <value>*</value>
-  </property>
-
 </configuration>

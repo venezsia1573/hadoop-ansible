@@ -1,25 +1,9 @@
 <configuration>
-
-  <property>
-    <name>dfs.replication</name>
-    <value>1</value>
-  </property>
-
-  <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>file:///home/ljiang/hadoop_tmp/dfs/name</value>
-  </property>
-
-  <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>file:///home/ljiang/hadoop_tmp/dfs/data</value>
-  </property>
-
+  <!-- Kerberos Principal & Keytab -->
   <property>
     <name>dfs.namenode.kerberos.principal</name>
     <value>hdfs/_HOST@HADOOP.LOCAL</value>
   </property>
-
   <property>
     <name>dfs.namenode.keytab.file</name>
     <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
@@ -29,40 +13,31 @@
     <name>dfs.datanode.kerberos.principal</name>
     <value>hdfs/_HOST@HADOOP.LOCAL</value>
   </property>
-
   <property>
     <name>dfs.datanode.keytab.file</name>
     <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
   </property>
 
+  <!-- 必需开启，启用 SASL 方式认证 Data Transfer -->
   <property>
-    <name>dfs.web.authentication.kerberos.principal</name>
-    <value>HTTP/_HOST@HADOOP.LOCAL</value>
+    <name>dfs.data.transfer.protection</name>
+    <value>authentication</value>
   </property>
 
+  <!-- 强制 DataNode HTTP 使用 HTTPS -->
   <property>
-    <name>dfs.web.authentication.kerberos.keytab</name>
-    <value>/etc/security/keytabs/spnego.service.keytab</value>
+    <name>dfs.http.policy</name>
+    <value>HTTPS_ONLY</value>
   </property>
 
-  <property>
-    <name>dfs.block.access.token.enable</name>
-    <value>true</value>
-  </property>
-
+  <!-- 使用非特权端口（>1024），代替 50010/50075/8010 -->
   <property>
     <name>dfs.datanode.address</name>
-    <value>0.0.0.0:50010</value>
+    <value>0.0.0.0:1004</value>
   </property>
-
   <property>
     <name>dfs.datanode.http.address</name>
-    <value>0.0.0.0:50075</value>
+    <value>0.0.0.0:1006</value>
   </property>
-
-  <property>
-    <name>dfs.datanode.ipc.address</name>
-    <value>0.0.0.0:8010</value>
-  </property>
-
+  <!-- HTTPS 地址根据版本可能为 dfs.datanode.https.address -->
 </configuration>
