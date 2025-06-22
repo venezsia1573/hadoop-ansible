@@ -1,7 +1,8 @@
 <configuration>
+
   <property>
     <name>dfs.replication</name>
-    <value>2</value>
+    <value>1</value>
   </property>
 
   <property>
@@ -13,50 +14,55 @@
     <name>dfs.datanode.data.dir</name>
     <value>file:///home/ljiang/hadoop_tmp/dfs/data</value>
   </property>
- <property>
-  <name>dfs.namenode.kerberos.principal</name>
-  <value>hdfs/_HOST@HADOOP.LOCAL</value>
-</property>
-<property>
-  <name>dfs.namenode.keytab.file</name>
-  <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
-</property>
-<property>
-  <name>dfs.datanode.kerberos.principal</name>
-  <value>hdfs/_HOST@HADOOP.LOCAL</value>
-</property>
-<property>
-  <name>dfs.datanode.keytab.file</name>
-  <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
-</property>
-<property>
-  <name>dfs.web.authentication.kerberos.principal</name>
-  <value>HTTP/_HOST@HADOOP.LOCAL</value>
-</property>
-<property>
-  <name>dfs.web.authentication.kerberos.keytab</name>
-  <value>/etc/security/keytabs/spnego.service.keytab</value>
-</property>
-<property>
-  <name>dfs.block.access.token.enable</name>
-  <value>true</value>
-</property>
+
   <property>
-    <name>hadoop.security.authentication</name>
-    <value>kerberos</value>
-</property>
-<property>
-  <name>dfs.datanode.address</name>
-  <value>0.0.0.0:50010</value>
-</property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>hdfs/_HOST@HADOOP.LOCAL</value>
+  </property>
 
-<property>
-  <name>dfs.datanode.http.address</name>
-  <value>0.0.0.0:50075</value>
-</property>
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
+  </property>
 
-<property>
-  <name>dfs.datanode.ipc.address</name>
-  <value>0.0.0.0:8010</value>
-</property>
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value>hdfs/_HOST@HADOOP.LOCAL</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value>HTTP/_HOST@HADOOP.LOCAL</value>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value>/etc/security/keytabs/spnego.service.keytab</value>
+  </property>
+
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:50010</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:50075</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+    <value>0.0.0.0:8010</value>
+  </property>
+
 </configuration>
