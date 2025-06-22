@@ -1,16 +1,45 @@
 <configuration>
-  <!-- Kerberos 相关 -->
-  <property><name>dfs.datanode.kerberos.principal</name><value>hdfs/_HOST@HADOOP.LOCAL</value></property>
-  <property><name>dfs.datanode.keytab.file</name><value>/etc/security/keytabs/hdfs.dn01.keytab</value></property>
-  <property><name>dfs.block.access.token.enable</name><value>true</value></property>
+  <!-- Kerberos 启用标志 -->
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+  </property>
 
-  <!-- 使用 Privileged Ports -->
-  <property><name>dfs.datanode.address</name><value>0.0.0.0:1004</value></property>
-  <property><name>dfs.datanode.http.address</name><value>0.0.0.0:1006</value></property>
+  <!-- NameNode -->
+  <property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>hdfs/_HOST@HADOOP.LOCAL</value>
+  </property>
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
+  </property>
 
-  <!-- 可选 HTTPS UI -->
-  <property><name>dfs.datanode.https.address</name><value>0.0.0.0:9865</value></property>
+  <!-- DataNode -->
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value>hdfs/_HOST@HADOOP.LOCAL</value>
+  </property>
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
+  </property>
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:1004</value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:1006</value>
+  </property>
 
-  <!-- 数据传输保护 -->
-  <property><name>dfs.data.transfer.protection</name><value>authentication</value></property>
+  <!-- WebSPNEGO (WebHDFS/HTTP) -->
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value>HTTP/_HOST@HADOOP.LOCAL</value>
+  </property>
+  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value>/etc/security/keytabs/spnego.service.keytab</value>
+  </property>
 </configuration>
