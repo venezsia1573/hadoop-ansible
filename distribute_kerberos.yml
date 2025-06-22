@@ -70,6 +70,14 @@
         group: ljiang
         mode: '0644'
 
+    - name: Distribute hadoop-env.sh
+      copy:
+        src: files/hadoop-env.sh
+        dest: "{{ hadoop_conf_dir }}/hadoop-env.sh"
+        owner: ljiang
+        group: ljiang
+        mode: '0644'
+
     - name: Kinit for HDFS (optional)
       shell: "kinit -kt {{ keytab_dir }}/{{ keytabs[inventory_hostname] }} hdfs/{{ inventory_hostname }}@HADOOP.LOCAL"
       become_user: ljiang

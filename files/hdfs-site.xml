@@ -1,43 +1,16 @@
 <configuration>
-  <!-- Kerberos Principal & Keytab -->
-  <property>
-    <name>dfs.namenode.kerberos.principal</name>
-    <value>hdfs/_HOST@HADOOP.LOCAL</value>
-  </property>
-  <property>
-    <name>dfs.namenode.keytab.file</name>
-    <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
-  </property>
+  <!-- Kerberos 相关 -->
+  <property><name>dfs.datanode.kerberos.principal</name><value>hdfs/_HOST@HADOOP.LOCAL</value></property>
+  <property><name>dfs.datanode.keytab.file</name><value>/etc/security/keytabs/hdfs.dn01.keytab</value></property>
+  <property><name>dfs.block.access.token.enable</name><value>true</value></property>
 
-  <property>
-    <name>dfs.datanode.kerberos.principal</name>
-    <value>hdfs/_HOST@HADOOP.LOCAL</value>
-  </property>
-  <property>
-    <name>dfs.datanode.keytab.file</name>
-    <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
-  </property>
+  <!-- 使用 Privileged Ports -->
+  <property><name>dfs.datanode.address</name><value>0.0.0.0:1004</value></property>
+  <property><name>dfs.datanode.http.address</name><value>0.0.0.0:1006</value></property>
 
-  <!-- 必需开启，启用 SASL 方式认证 Data Transfer -->
-  <property>
-    <name>dfs.data.transfer.protection</name>
-    <value>authentication</value>
-  </property>
+  <!-- 可选 HTTPS UI -->
+  <property><name>dfs.datanode.https.address</name><value>0.0.0.0:9865</value></property>
 
-  <!-- 强制 DataNode HTTP 使用 HTTPS -->
-  <property>
-    <name>dfs.http.policy</name>
-    <value>HTTPS_ONLY</value>
-  </property>
-
-  <!-- 使用非特权端口（>1024），代替 50010/50075/8010 -->
-  <property>
-    <name>dfs.datanode.address</name>
-    <value>0.0.0.0:1004</value>
-  </property>
-  <property>
-    <name>dfs.datanode.http.address</name>
-    <value>0.0.0.0:1006</value>
-  </property>
-  <!-- HTTPS 地址根据版本可能为 dfs.datanode.https.address -->
+  <!-- 数据传输保护 -->
+  <property><name>dfs.data.transfer.protection</name><value>authentication</value></property>
 </configuration>
