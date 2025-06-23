@@ -1,29 +1,29 @@
 <configuration>
   <!-- Kerberos 启用标志 -->
-  <property>
+  <!-- <property>
     <name>dfs.block.access.token.enable</name>
     <value>true</value>
-  </property>
+  </property> -->
 
   <!-- NameNode -->
-  <property>
+  <!-- <property>
     <name>dfs.namenode.kerberos.principal</name>
     <value>hdfs/_HOST@HADOOP.LOCAL</value>
   </property>
   <property>
     <name>dfs.namenode.keytab.file</name>
     <value>/etc/security/keytabs/hdfs.nn01.keytab</value>
-  </property>
+  </property> -->
 
   <!-- DataNode -->
-  <property>
+  <!-- <property>
     <name>dfs.datanode.kerberos.principal</name>
     <value>hdfs/_HOST@HADOOP.LOCAL</value>
   </property>
   <property>
     <name>dfs.datanode.keytab.file</name>
     <value>/etc/security/keytabs/hdfs.dn01.keytab</value>
-  </property>
+  </property> -->
   <property>
     <name>dfs.datanode.address</name>
     <value>0.0.0.0:1004</value>
@@ -34,12 +34,12 @@
   </property>
 
   <!-- WebSPNEGO (WebHDFS/HTTP) -->
-  <property>
+  <!-- <property>
     <name>dfs.web.authentication.kerberos.principal</name>
     <value>HTTP/_HOST@HADOOP.LOCAL</value>
   </property>
   <property>
     <name>dfs.web.authentication.kerberos.keytab</name>
     <value>/etc/security/keytabs/spnego.service.keytab</value>
-  </property>
+  </property> -->
 </configuration>
