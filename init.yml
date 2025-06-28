@@ -1,0 +1,62 @@
+---
+- name: Initialize Hadoop Node Environment
+  hosts: all
+  become: yes
+
+  vars:
+    java_package: openjdk-11-jdk
+    extra_packages:
+      - openssh-server
+      - ssh
+      - ntp
+      - net-tools
+      - curl
+      - wget
+      - vim
+      - python3
+      - python3-pip
+      - jsvc
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Java and required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ extra_packages + [java_package] }}"
+
+    - name: Ensure SSH service is running
+      systemd:
+        name: ssh
+        state: started
+        enabled: yes
+
+    - name: Ensure NTP service is running
+      systemd:
+        name: ntp
+        state: started
+        enabled: yes
+
+    - name: Set JAVA_HOME environment variable (for bash)
+      lineinfile:
+        path: /etc/profile.d/java.sh
+        line: 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-{{ ansible_architecture }}'
+        create: yes
+        state: present
+        mode: '0755'
+
+    - name: Apply JAVA_HOME immediately
+      shell: source /etc/profile.d/java.sh
+      args:
+        executable: /bin/bash
+
+    - name: Create hdfs user (if needed)
+      user:
+        name: hdfs
+        shell: /bin/bash
+        create_home: yes
+        state: present
